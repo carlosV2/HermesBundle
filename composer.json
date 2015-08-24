@@ -1,0 +1,21 @@
+{
+    "name": "carlos-v2/hermes-bundle",
+    "type": "symfony-bundle",
+    "description": "Hermes Bundle",
+    "keywords": [],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Carlos Ortega",
+            "email": "carlosV2.0@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Carlosv2\\HermesBundle\\": "" }
+    },
+    "require": {
+        "swiftmailer/swiftmailer": "~5.0",
+        "symfony/framework-bundle": "~2.0",
+        "everzet/persisted-objects": "~1.0"
+    }
+}
