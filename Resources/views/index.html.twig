@@ -1,0 +1,64 @@
+<html lang="en" ng-app="HermesBundleApp">
+<head>
+    <style type="text/css">
+        {{ css['angular-material.min.css'] }}
+        {{ css['main.css'] }}
+    </style>
+    <meta name="viewport" content="initial-scale=1" />
+</head>
+<body layout="column" ng-controller="AppCtrl">
+<md-toolbar layout="row">
+    <div class="md-toolbar-tools">
+        <md-button ng-click="toggleSidenav('left')" hide-gt-sm class="md-icon-button">
+            <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
+        </md-button>
+        <h1>HermesBundle</h1>
+    </div>
+</md-toolbar>
+<div layout="row" flex>
+    <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+        <div ng-controller="InboxListCtrl">
+            <ul class="emailList">
+                <li class="emailWrapper" ng-repeat="email in emails | orderBy:'-dateReceived'">
+                    <md-button href="#/email/{[{email._id}]}">
+                        <div class="date">{[{email.dateReceived * 1000 | date:'shortTime'}]}</div>
+                        <div class="sender">{[{email.fromName}]}</div>
+                        <div class="subject">{[{email.subject}]}</div>
+                    </md-button>
+                </li>
+            </ul>
+        </div>
+    </md-sidenav>
+    <div layout="column" flex id="content">
+        <md-content layout="column" flex class="md-padding">
+            <div ng-view></div>
+        </md-content>
+    </div>
+</div>
+<script>
+    {{ js['angular.min.js'] }}
+    {{ js['angular-animate.min.js'] }}
+    {{ js['angular-aria.min.js'] }}
+    {{ js['angular-route.min.js'] }}
+    {{ js['angular-material.min.js'] }}
+    {{ js['main.js'] }}
+</script>
+
+<script type="text/ng-template" id="views/start.html">
+    <h2>Welcome to HermesBundle</h2>
+</script>
+
+<script type="text/ng-template" id="views/emailDetails.html">
+    <div class="emailDetails" ng-init="visor='html'">
+        <div class="sender">From: <strong class="data" title="{[{emailData.fromEmail}]}">{[{emailData.fromName}]}</strong></div>
+        <div class="receiver">To: <strong class="data">your-email@example.com</strong></div>
+        <div class="date">Received: <strong class="data">{[{emailData.dateReceived * 1000 | date:'medium'}]}</strong></div>
+        <label ng-show="visor=='html'" class="text"><input name="visor" type="radio" ng-model="visor" value="text"></label>
+        <label ng-show="visor=='text'" class="html"><input name="visor" type="radio" ng-model="visor" value="html"></label>
+        <h2 class="subject">Subject: {[{emailData.subject}]}</h2>
+        <iframe class="viewer" email-viewer scrolling="no" frameborder="0"></iframe>
+    </div>
+    </div>
+</script>
+</body>
+</html>
