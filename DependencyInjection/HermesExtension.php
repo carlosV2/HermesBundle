@@ -22,6 +22,6 @@ class HermesExtension extends Extension
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('hermes.xml');
 
-        $container->setAlias('mailer', 'carlosv2.hermes.swiftmailer.proxy');
+        $container->setAlias('mailer', 'carlosv2.hermesbundle.swiftmailer.proxy');
     }
 }
