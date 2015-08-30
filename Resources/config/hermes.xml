@@ -10,6 +10,8 @@
         <service id="carlosv2.hermesbundle.swiftmailer.proxy" class="Carlosv2\HermesBundle\Proxy\SwiftMailerProxy">
             <argument type="service" id="swiftmailer.transport" />
             <argument type="service" id="carlosv2.hermesbundle.message.reposiory" />
+            <argument>%carlosv2.configuration.keep_copy%</argument>
+            <argument>%carlosv2.configuration.prevent_delivery%</argument>
         </service>
     </services>
 </container>

@@ -12,11 +12,26 @@ class SwiftMailerProxy extends \Swift_Mailer
     private $repository;
 
     /**
-     * {@inheritdoc}
+     * @var bool
      */
-    public function __construct(\Swift_Transport $transport, MessageRepository $repository)
+    private $keepCopy;
+
+    /**
+     * @var bool
+     */
+    private $preventDelivery;
+
+    /**
+     * @param \Swift_Transport  $transport
+     * @param MessageRepository $repository
+     * @param bool              $keepCopy
+     * @param bool              $preventDelivery
+     */
+    public function __construct(\Swift_Transport $transport, MessageRepository $repository, $keepCopy, $preventDelivery)
     {
         $this->repository = $repository;
+        $this->keepCopy = $keepCopy;
+        $this->preventDelivery = $preventDelivery;
 
         parent::__construct($transport);
     }
@@ -26,8 +41,12 @@ class SwiftMailerProxy extends \Swift_Mailer
      */
     public function send(\Swift_Mime_Message $message, &$failedRecipients = null)
     {
-        $this->repository->save($message);
+        if ($this->keepCopy) {
+            $this->repository->save($message);
+        }
 
-        return parent::send($message, $failedRecipients);
+        if ($this->preventDelivery) {
+            return parent::send($message, $failedRecipients);
+        }
     }
 }
