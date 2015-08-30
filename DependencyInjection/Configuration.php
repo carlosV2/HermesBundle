@@ -13,7 +13,13 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $treeBuilder->root('hermes');
+        $treeBuilder
+            ->root('HermesBundle')
+            ->children()
+                ->booleanNode('keep_copy')->defaultFalse()->end()
+                ->booleanNode('prevent_delivery')->defaultTrue()->end()
+            ->end()
+        ;
 
         return $treeBuilder;
     }
