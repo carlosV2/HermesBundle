@@ -4,8 +4,12 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="carlosv2.hermes.swiftmailer.proxy" class="Carlosv2\HermesBundle\Proxy\SwiftMailerProxy" public="true">
+        <service id="carlosv2.hermesbundle.message.reposiory" class="Carlosv2\HermesBundle\Repository\MessageRepository">
+            <argument>%kernel.cache_dir%/carlosV2/HermesBundle/messages.txt</argument>
+        </service>
+        <service id="carlosv2.hermesbundle.swiftmailer.proxy" class="Carlosv2\HermesBundle\Proxy\SwiftMailerProxy">
             <argument type="service" id="swiftmailer.transport" />
+            <argument type="service" id="carlosv2.hermesbundle.message.reposiory" />
         </service>
     </services>
 </container>
