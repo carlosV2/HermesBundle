@@ -19,6 +19,9 @@ class HermesExtension extends Extension
         $configuration = new Configuration();
         $config = $processor->processConfiguration($configuration, $configs);
 
+        $container->setParameter('carlosv2.configuration.keep_copy', $config['keep_copy']);
+        $container->setParameter('carlosv2.configuration.prevent_delivery', $config['prevent_delivery']);
+
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('hermes.xml');
 
