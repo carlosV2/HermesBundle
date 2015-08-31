@@ -3,3 +3,9 @@ carlosv2_hermes_index:
     defaults: { _controller: HermesBundle:SendInterface:index }
     requirements:
         _method: GET
+
+carlosv2_hermes_messages_get:
+    pattern: /messages
+    defaults: { _controller: HermesBundle:MessagesApi:get }
+    requirements:
+        _method: GET
