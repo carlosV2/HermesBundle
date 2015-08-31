@@ -1,5 +1,5 @@
 carlosv2_hermes_index:
     pattern: /
-    defaults: { _controller: HermesBundle:ShowMessages:index }
+    defaults: { _controller: HermesBundle:SendInterface:index }
     requirements:
         _method: GET

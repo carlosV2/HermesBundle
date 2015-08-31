@@ -5,7 +5,7 @@ namespace Carlosv2\HermesBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
-class ShowMessagesController extends Controller
+class SendInterfaceController extends Controller
 {
     /**
      * @return Response
