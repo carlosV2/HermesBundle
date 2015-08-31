@@ -22,7 +22,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', function($scope, $mdSidenav){
 }])
 
     .controller('InboxListCtrl', function($scope, $http){
-        $http.get('data').then(function (response) {
+        $http.get('messages').then(function (response) {
             $scope.emails = response;
         });
     })
