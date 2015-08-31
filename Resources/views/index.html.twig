@@ -1,8 +1,8 @@
 <html lang="en" ng-app="HermesBundleApp">
 <head>
     <style type="text/css">
-        {{ css['angular-material.min.css'] }}
-        {{ css['main.css'] }}
+        {{ css['angular-material.min.css']|raw }}
+        {{ css['main.css']|raw }}
     </style>
     <meta name="viewport" content="initial-scale=1" />
 </head>
@@ -36,12 +36,12 @@
     </div>
 </div>
 <script>
-    {{ js['angular.min.js'] }}
-    {{ js['angular-animate.min.js'] }}
-    {{ js['angular-aria.min.js'] }}
-    {{ js['angular-route.min.js'] }}
-    {{ js['angular-material.min.js'] }}
-    {{ js['main.js'] }}
+    {{ js['angular.min.js']|raw }}
+    {{ js['angular-animate.min.js']|raw }}
+    {{ js['angular-aria.min.js']|raw }}
+    {{ js['angular-route.min.js']|raw }}
+    {{ js['angular-material.min.js']|raw }}
+    {{ js['main.js']|raw }}
 </script>
 
 <script type="text/ng-template" id="views/start.html">
