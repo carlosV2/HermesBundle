@@ -45,7 +45,7 @@ class SwiftMailerProxy extends \Swift_Mailer
             $this->repository->save($message);
         }
 
-        if ($this->preventDelivery) {
+        if (!$this->preventDelivery) {
             return parent::send($message, $failedRecipients);
         }
     }

@@ -14,7 +14,7 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
         $treeBuilder
-            ->root('HermesBundle')
+            ->root('hermes')
             ->children()
                 ->booleanNode('keep_copy')->defaultFalse()->end()
                 ->booleanNode('prevent_delivery')->defaultTrue()->end()
