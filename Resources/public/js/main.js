@@ -21,8 +21,10 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', function($scope, $mdSidenav){
     };
 }])
 
-    .controller('InboxListCtrl', function($scope, $filter, emailData){
-        $scope.emails = emailData;
+    .controller('InboxListCtrl', function($scope, $http){
+        $http.get('data').then(function (response) {
+            $scope.emails = response;
+        });
     })
 
     .controller('EmailDetailsCtrl', function($scope, $routeParams, $location, emailData){
