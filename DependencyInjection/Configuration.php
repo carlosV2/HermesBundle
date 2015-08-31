@@ -17,7 +17,7 @@ class Configuration implements ConfigurationInterface
             ->root('hermes')
             ->children()
                 ->booleanNode('keep_copy')->defaultFalse()->end()
-                ->booleanNode('prevent_delivery')->defaultTrue()->end()
+                ->booleanNode('prevent_delivery')->defaultFalse()->end()
             ->end()
         ;
 
